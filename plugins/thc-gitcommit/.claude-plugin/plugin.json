@@ -1,7 +1,7 @@
 {
   "name": "thc-gitcommit",
   "description": "依專案 commit 規範建立 git commit，規範來源依序為 .cz.toml、其他規範檔、git log 慣例。模式 A 處理已暫存的變更，模式 B 依主題自動拆分為多個 commit。",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": {
     "name": "tsenghc"
   }

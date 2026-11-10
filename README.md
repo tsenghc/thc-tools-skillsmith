@@ -1,6 +1,13 @@
 # skillsmith
 
-個人用的 [Claude Code](https://code.claude.com) plugin marketplace，集中管理自製的技能，並可安裝到任何裝置上。
+作者自用後公開分享的 [Claude Code](https://code.claude.com) plugin marketplace，收錄以繁體中文撰寫的開發流程技能：依規範建立 commit、對話交接、接手專案前的探查，以及繁中技術文件的風格與結構規範。
+
+歡迎自由使用與修改。本儲存庫以作者自身需求為主，不保證回應 issue 或提供支援。
+
+## 使用前提
+
+- [Claude Code](https://code.claude.com)
+- 執行 `thc-zhtw-style` 的檢查腳本時需要 Python 3；腳本只使用標準函式庫，不需另外安裝套件。
 
 ## Plugin 一覽
 
@@ -11,15 +18,15 @@
 | `thc-onboarding` | `thc-onboarding` | 動手前唯讀探查專案，以繁體中文呈現精簡的專案概況後停下等待指示 |
 | `thc-docs` | `thc-zhtw-style`、`thc-techdoc` | 繁中技術文件：風格規範與檢查腳本 `check_zhtw.py`，以及把素材整理成分層技術文件的結構規範 |
 
+各 plugin 互相獨立，可以只安裝需要的幾個。`thc-gitcommit`、`thc-handoff`、`thc-onboarding` 各自內建精簡的寫作規範；同時安裝 `thc-docs` 時，改以完整的風格規範為準。
+
 ## 安裝
 
-本儲存庫為私有，各裝置須先具備存取權限：在 GitHub 帳號加入 SSH 金鑰，或執行 `gh auth login`。
-
 ```bash
-# 1. 註冊 marketplace (私有儲存庫可使用 SSH 位址)
-/plugin marketplace add git@github.com:tsenghc/thc-tools-skillsmith.git
+# 1. 註冊 marketplace
+/plugin marketplace add tsenghc/thc-tools-skillsmith
 
-# 2. 安裝 plugin
+# 2. 安裝需要的 plugin
 /plugin install thc-gitcommit@skillsmith
 /plugin install thc-handoff@skillsmith
 /plugin install thc-onboarding@skillsmith
@@ -28,7 +35,7 @@
 
 ## 更新
 
-推送變更後，在各裝置執行：
+本儲存庫發佈新版本後，執行下列指令取得更新：
 
 ```bash
 /plugin marketplace update skillsmith
@@ -50,9 +57,19 @@
 | `thc-techdoc` | 「整理成技術文件」、「寫 SOP」 | 判定文件型態後停下確認，再產出分層文件 |
 | `thc-zhtw-style` | 「校稿」、「潤稿」 | 套用繁中風格規範並附修改摘要 |
 
-## 文件風格檢查
+在新對話中說「繼續上次的工作」時，專案根目錄有 `HANDOFF.md` 則由 `thc-handoff` 接手，沒有則由 `thc-onboarding` 探查專案。
 
-本儲存庫的技能與文件皆遵循 `thc-zhtw-style` 風格規範。修改後執行檢查腳本，結束代碼為 0 代表沒有錯誤：
+所有技能在提交、執行具副作用的指令或開始實作前，都會停在人工確認點，等使用者明確同意後才繼續。
+
+## 修改技能
+
+如果要依自己的需求修改技能，以下檔案可以作為參考：
+
+- `GLOSSARY.md`: 本儲存庫的用語定義與譯名約定。
+- `docs/adr/`: 設計決策與其原因。
+- `AGENTS.md`: AI agent 在本儲存庫工作時遵循的規範。
+
+本儲存庫的文件與技能遵循 `thc-zhtw-style` 風格規範。修改後執行檢查腳本，結束代碼為 0 代表沒有錯誤：
 
 ```bash
 python3 plugins/thc-docs/skills/thc-zhtw-style/scripts/check_zhtw.py README.md AGENTS.md GLOSSARY.md docs/agents/*.md docs/adr/*.md plugins/*/skills/*/SKILL.md plugins/*/skills/*/references/*.md
@@ -63,6 +80,7 @@ python3 plugins/thc-docs/skills/thc-zhtw-style/scripts/check_zhtw.py README.md A
 ```text
 AGENTS.md                           # agent 設定與專案規範
 GLOSSARY.md                         # 專案用語定義
+LICENSE                             # MIT 授權條款
 docs/agents/                        # mattpocock 技能的設定
 docs/adr/                           # 架構決策紀錄 (ADR)
 .claude-plugin/marketplace.json     # marketplace 清單，列出所有 plugin
@@ -81,6 +99,6 @@ plugins/thc-docs/
   skills/thc-techdoc/               # 結構規範：SKILL.md、references/layers.md
 ```
 
-## 隱私說明
+## 授權
 
-本儲存庫只包含技能指示文字與檢查腳本，不含任何私人媒體檔案，例如照片、縮圖總覽或影片。可以維持私有，也可以公開。
+本儲存庫以 [MIT 授權條款](LICENSE) 釋出。
