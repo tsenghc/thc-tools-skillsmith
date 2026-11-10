@@ -1,0 +1,8 @@
+{
+  "name": "thc-handoff",
+  "description": "將對話的工作脈絡存成 HANDOFF.md，納入 git 追蹤並標示最後更新時間；新對話接手時先求證、回報，再等待確認。",
+  "version": "0.2.0",
+  "author": {
+    "name": "tsenghc"
+  }
+}

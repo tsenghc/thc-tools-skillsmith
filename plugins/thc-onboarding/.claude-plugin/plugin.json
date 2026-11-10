@@ -1,0 +1,8 @@
+{
+  "name": "thc-onboarding",
+  "description": "新對話動手前唯讀探查專案架構、限制、待辦、開發風格、git 紀錄與開發流程，以繁體中文呈現精簡的專案概況後停下等待指示。",
+  "version": "0.2.0",
+  "author": {
+    "name": "tsenghc"
+  }
+}

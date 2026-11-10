@@ -1,0 +1,8 @@
+{
+  "name": "thc-docs",
+  "description": "繁中技術文件：thc-zhtw-style 風格規範 (用字、術語、識別字保護、標點，附檢查腳本)，以及 thc-techdoc 結構規範 (判定型態後分層產出 Markdown 文件並自我檢查)。",
+  "version": "0.1.0",
+  "author": {
+    "name": "tsenghc"
+  }
+}

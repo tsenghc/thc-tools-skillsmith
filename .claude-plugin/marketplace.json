@@ -1,0 +1,28 @@
+{
+  "name": "skillsmith",
+  "owner": {
+    "name": "tsenghc"
+  },
+  "plugins": [
+    {
+      "name": "thc-gitcommit",
+      "source": "./plugins/thc-gitcommit",
+      "description": "依專案 commit 規範建立 git commit，規範來源依序為 .cz.toml、其他規範檔、git log 慣例。模式 A 處理已暫存的變更，模式 B 依主題自動拆分為多個 commit。"
+    },
+    {
+      "name": "thc-handoff",
+      "source": "./plugins/thc-handoff",
+      "description": "將對話的工作脈絡存成 HANDOFF.md，納入 git 追蹤並標示最後更新時間；新對話接手時先求證、回報，再等待確認。"
+    },
+    {
+      "name": "thc-onboarding",
+      "source": "./plugins/thc-onboarding",
+      "description": "新對話動手前唯讀探查專案架構、限制、待辦、開發風格、git 紀錄與開發流程，以繁體中文呈現精簡的專案概況後停下等待指示。"
+    },
+    {
+      "name": "thc-docs",
+      "source": "./plugins/thc-docs",
+      "description": "繁中技術文件：thc-zhtw-style 風格規範 (用字、術語、識別字保護、標點，附檢查腳本)，以及 thc-techdoc 結構規範 (判定型態後分層產出 Markdown 文件並自我檢查)。"
+    }
+  ]
+}
